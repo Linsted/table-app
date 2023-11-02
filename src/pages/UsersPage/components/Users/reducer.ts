@@ -1,6 +1,6 @@
 import { handleActions } from "redux-actions";
 
-import { IUser } from "../../../../types";
+import { IUser } from "@/types";
 
 import { getUsersSuccess } from "./actions";
 

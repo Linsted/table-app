@@ -1,8 +1,9 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 
+import { IUser } from "@/types";
+import { fetchUsers } from "@/pages/utils/facades/fetchUsers";
+
 import { getUsersError, getUsersStart, getUsersSuccess } from "../actions";
-import { IUser } from "../../../../../types";
-import { fetchUsers } from "../../../../utils/facades/fetchUsers";
 
 export function* getUsersWatcher() {
   yield takeEvery(getUsersStart, getUsersWorker);
