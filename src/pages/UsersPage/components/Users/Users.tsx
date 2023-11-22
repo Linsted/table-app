@@ -1,5 +1,8 @@
-import React from "react";
+import { useSelector } from "react-redux";
+import { usersSelector } from "./selectors";
 
 export default function Users() {
-  return <div></div>;
+  const users = useSelector(usersSelector);
+  console.log(users);
+  return <div>USERS</div>;
 }

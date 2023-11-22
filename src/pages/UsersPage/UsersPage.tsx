@@ -1,18 +1,19 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
-import { usersSelector } from "./components/Users/selectors";
 import { getUsersStart } from "./components/Users/actions";
+import Users from "./components/Users/Users";
 
 export default function UsersPage() {
   const dispatch = useDispatch();
-  const users = useSelector(usersSelector);
 
   useEffect(() => {
     dispatch(getUsersStart());
   }, [dispatch]);
 
-  console.log(users);
-
-  return <div></div>;
+  return (
+    <div>
+      <Users />
+    </div>
+  );
 }
