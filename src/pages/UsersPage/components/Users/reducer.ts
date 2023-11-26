@@ -1,29 +1,23 @@
-import { handleActions } from "redux-actions";
+import { UsersState, UsersAction } from "@/types";
 
-import { IUser } from "@/types";
+import { USERS_ACTIONS_TYPES } from "./constants";
 
-import { getUsersSuccess } from "./actions";
-
-export interface IState {
-  users: IUser[];
-  error: boolean;
-}
-
-const initialState: IState = {
+const initialState: UsersState = {
   users: [],
   error: false,
 };
 
-const reducerMap = {
-  [String(getUsersSuccess)]: (
-    state: IState,
-    { payload }: { payload: IUser[] }
-  ) => {
-    return {
-      ...state,
-      users: [...payload],
-    };
-  },
+export const userReducer = (
+  state = initialState,
+  action = {} as UsersAction
+) => {
+  switch (action.type) {
+    case USERS_ACTIONS_TYPES.GET_USERS_SUCCESS:
+      return {
+        ...state,
+        users: [...action.payload],
+      };
+    default:
+      return state;
+  }
 };
-
-export const userReducer = handleActions(reducerMap, initialState);

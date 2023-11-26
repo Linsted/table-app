@@ -1,12 +1,7 @@
-import { createSelector } from "reselect";
+import { UsersState } from "@/types";
 
-import { USERS_KEY } from "./constants";
-import { IState } from "./reducer";
+type UserState = {
+  users: UsersState;
+};
 
-interface IUserState {
-  users: IState;
-}
-
-const getUsers = (state: IUserState) => state[USERS_KEY];
-
-export const usersSelector = createSelector(getUsers, (users) => users.users);
+export const usersSelector = (state: UserState) => state.users.users;
