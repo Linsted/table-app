@@ -4,7 +4,7 @@ import { USERS_ACTIONS_TYPES } from "./constants";
 
 const initialState: UsersState = {
   users: [],
-  error: false,
+  error: null,
 };
 
 export const userReducer = (

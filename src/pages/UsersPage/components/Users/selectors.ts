@@ -1,7 +1,3 @@
-import { UsersState } from "@/types";
+import { RootState } from "@/types";
 
-type UserState = {
-  users: UsersState;
-};
-
-export const usersSelector = (state: UserState) => state.users.users;
+export const usersSelector = (state: RootState) => state.users.users;

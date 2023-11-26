@@ -1,6 +1,6 @@
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, put, takeEvery } from "typed-redux-saga";
 
-import { IUser } from "@/types";
+import { User } from "@/types";
 import { fetchUsers } from "@/pages/utils/facades/fetchUsers";
 
 import { getUsersError, getUsersStart, getUsersSuccess } from "../actions";
@@ -11,10 +11,10 @@ export function* getUsersWatcher() {
 
 function* getUsersWorker() {
   try {
-    const data: IUser[] = yield call(fetchUsers);
+    const data: User[] = yield* call(fetchUsers);
     console.log(data);
-    yield put(getUsersSuccess(data));
+    yield* put(getUsersSuccess(data));
   } catch (error) {
-    yield put(getUsersError());
+    yield* put(getUsersError(error as Error));
   }
 }
