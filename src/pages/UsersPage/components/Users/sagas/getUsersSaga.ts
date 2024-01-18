@@ -12,7 +12,6 @@ export function* getUsersWatcher() {
 function* getUsersWorker() {
   try {
     const data: User[] = yield* call(fetchUsers);
-    console.log(data);
     yield* put(getUsersSuccess(data));
   } catch (error) {
     yield* put(getUsersError(error as Error));

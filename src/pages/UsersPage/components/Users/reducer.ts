@@ -17,6 +17,11 @@ export const userReducer = (
         ...state,
         users: [...action.payload],
       };
+    case USERS_ACTIONS_TYPES.DELETE_USER_SUCCESS:
+      return {
+        ...state,
+        users: state.users.filter((user) => user.id !== action.payload),
+      };
     default:
       return state;
   }

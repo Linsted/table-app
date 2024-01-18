@@ -19,13 +19,20 @@ type ActionWithPayload<T, P> = {
 };
 
 type GetUsersStart = Action<USERS_ACTIONS_TYPES.GET_USERS_START>;
+
 type GetUsersSuccess = ActionWithPayload<
   USERS_ACTIONS_TYPES.GET_USERS_SUCCESS,
   User[]
 >;
+
 type GetUsersError = ActionWithPayload<
   USERS_ACTIONS_TYPES.GET_USERS_ERROR,
   boolean
+>;
+
+type DeleteUserSuccess = ActionWithPayload<
+  USERS_ACTIONS_TYPES.DELETE_USER_SUCCESS,
+  string
 >;
 
 export type UsersState = {
@@ -33,6 +40,10 @@ export type UsersState = {
   readonly error: Error | null;
 };
 
-export type UsersAction = GetUsersStart | GetUsersSuccess | GetUsersError;
+export type UsersAction =
+  | GetUsersStart
+  | GetUsersSuccess
+  | GetUsersError
+  | DeleteUserSuccess;
 
 export type RootState = ReturnType<typeof rootReducers>;
